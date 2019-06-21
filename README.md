@@ -1,26 +1,25 @@
-# RISC-V Compliance Framework
-The work here is under development and is not stable for consumption .. yet!
-
-## Documentation
-You can find the latest documentation of the work: [here](https://riscof.readthedocs.io/)
-
-Sample command for riscof
-
-Spike vs Spike
+##Downloading the repo
 ```
-python -m riscof.main -bm model_from_yaml -bf Examples/template_env.yaml -eyaml Examples/template_env.yaml -dm model_from_yaml -ispec Examples/template_isa.yaml -pspec Examples/template_platform.yaml --verbose debug
-
+git clone https://gitlab.com/incoresemi/riscof.git
+git checkout experimental
 
 ```
+Before proceeding further please ensure that riscv-toolchain and spike simulator is installed.
 
-Eclass vs Spike
+##Install dependencies
 ```
-python -m riscof.main -bm model_from_yaml -bf Examples/template_env.yaml -dm model_from_yaml -ispec Examples/template_isa.yaml -pspec Examples/template_platform.yaml -eyaml Examples/e_class_env.yaml --verbose debug
-
-```
-
-dbgen
-```
-python -m riscof.dbgen
+pip install -r requirements.txt
 
 ```
+##Running the simulation
+
+Macro definition file - riscof/framework/env
+test file path - suite/I-ADD-01.S
+
+command-
+```
+python -m riscof.main -bm model_from_yaml -bf Examples/template_env.yaml -dm model_from_yaml -ispec Examples/rv32i_isa.yaml -pspec Examples/rv32i_platform.yaml -eyaml Examples/template_env.yaml --verbose debug
+
+```
+
+Results shall be generated in work/
