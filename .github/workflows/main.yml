@@ -13,13 +13,36 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # The type of runner that the job will run on
-  lint-flake8:
+  
+  ############################################################
+
+  # lint-flake8:
+  #   runs-on: ubuntu-latest
+  #   name: flake8
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       python-version: [3.9]
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Set up Python ${{matrix.python-version}}
+  #     uses: actions/setup-python@v2
+  #     with:
+  #       python-version: ${{matrix.python-version}}
+  #   - name: flake8
+  #     run: |
+  #       pip install flake8
+  #       flake8
+
+  ##################################################################
+
+  pre-merge-check:
     runs-on: ubuntu-latest
-    name: flake8
+    name: python_installing
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.9]
+        python-version: [3.6.10]
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{matrix.python-version}}
@@ -28,5 +51,9 @@ jobs:
         python-version: ${{matrix.python-version}}
     - name: flake8
       run: |
-        pip install flake8
-        flake8
+        ./version_check.sh
+        pip3 install --upgrade pip
+        pip3 install -r riscof/requirements.txt -U
+        python3 setup sdist
+  # deploy:
+  # post-deploy-check:
