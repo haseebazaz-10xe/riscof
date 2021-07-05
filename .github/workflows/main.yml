@@ -32,23 +32,23 @@ jobs:
         pip3 install --upgrade pip
         pip3 install -r riscof/requirements.txt -U
         python3 setup.py sdist
-  running:
-    runs-on: ubuntu-latest
-    name: running_with_new_riscof
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: [3.6.10]
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python ${{matrix.python-version}}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{matrix.python-version}}
-    - name: setting up riscof new version
-      run: |
-        ./version_check.sh
-        pip3 install --upgrade pip
-        pip3 install -r riscof/requirements.txt -U
+#   running:
+#     runs-on: ubuntu-latest
+#     name: running_with_new_riscof
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         python-version: [3.6.10]
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Set up Python ${{matrix.python-version}}
+#       uses: actions/setup-python@v2
+#       with:
+#         python-version: ${{matrix.python-version}}
+#     - name: setting up riscof new version
+#       run: |
+#         ./version_check.sh
+#         pip3 install --upgrade pip
+#         pip3 install -r riscof/requirements.txt -U
         
-  post-deploy-check:
+#   post-deploy-check:
