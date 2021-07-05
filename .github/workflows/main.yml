@@ -54,6 +54,6 @@ jobs:
         ./version_check.sh
         pip3 install --upgrade pip
         pip3 install -r riscof/requirements.txt -U
-        python3 setup sdist
+        python3 setup.py sdist
   # deploy:
   # post-deploy-check:
