@@ -49,6 +49,8 @@ jobs:
       run: |
         ./version_check.sh
         pip3 install --upgrade pip
-        pip3 install -r riscof/requirements.txt -U
+        pip3 install -U riscof
+        git clone https://gitlab.com/incoresemi/riscof-plugins.git
+        riscof --help
         
 #   post-deploy-check:
